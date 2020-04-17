@@ -1,6 +1,24 @@
-
 import Foundation
+import ReactiveSwift
+import ReactiveFeedback
 
-class WelcomeViewModel {
+enum WelcomeViewModel {
+    struct State {
+        var status: Status = .initial
 
+    }
+
+    enum Status {
+        case initial
+        case loading
+        case loaded
+    }
+
+    enum Event {
+        case startSurvey
+    }
+
+    static func reduce(state: inout State, event: Event) {
+        
+    }
 }

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -17,6 +17,9 @@
 		74880D8F2449E3CD00A9D676 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D8E2449E3CD00A9D676 /* Coordinator.swift */; };
 		74880D912449E98900A9D676 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D902449E98900A9D676 /* AppCoordinator.swift */; };
 		74880D94244A0DC200A9D676 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D93244A0DC200A9D676 /* WelcomeViewModel.swift */; };
+		74880D96244A1D5000A9D676 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D95244A1D5000A9D676 /* AppState.swift */; };
+		74880D98244A215000A9D676 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D97244A215000A9D676 /* WelcomeCoordinator.swift */; };
+		74880D9A244A22AA00A9D676 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D99244A22AA00A9D676 /* WelcomeViewController.swift */; };
 		EDE8F0A408148E285A6C3CE2 /* Pods_XMTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0039B1C2F6BF27E739647A69 /* Pods_XMTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -48,6 +51,9 @@
 		74880D8E2449E3CD00A9D676 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		74880D902449E98900A9D676 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		74880D93244A0DC200A9D676 /* WelcomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModel.swift; sourceTree = "<group>"; };
+		74880D95244A1D5000A9D676 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		74880D97244A215000A9D676 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
+		74880D99244A22AA00A9D676 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		97AFDE1174D44EEC4D980023 /* Pods-XMTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTestTests.release.xcconfig"; path = "Target Support Files/Pods-XMTestTests/Pods-XMTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		DC4EFE8F173F45F0F2D58EC9 /* Pods-XMTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTest.debug.xcconfig"; path = "Target Support Files/Pods-XMTest/Pods-XMTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,6 +111,7 @@
 			isa = PBXGroup;
 			children = (
 				74880D92244A0C9200A9D676 /* Welcome */,
+				74880D95244A1D5000A9D676 /* AppState.swift */,
 				74880D6B2449083200A9D676 /* AppDelegate.swift */,
 				74880D8E2449E3CD00A9D676 /* Coordinator.swift */,
 				74880D902449E98900A9D676 /* AppCoordinator.swift */,
@@ -130,6 +137,8 @@
 			isa = PBXGroup;
 			children = (
 				74880D93244A0DC200A9D676 /* WelcomeViewModel.swift */,
+				74880D97244A215000A9D676 /* WelcomeCoordinator.swift */,
+				74880D99244A22AA00A9D676 /* WelcomeViewController.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -142,7 +151,6 @@
 				12DC2F5DD0B344714F9A439D /* Pods-XMTestTests.debug.xcconfig */,
 				97AFDE1174D44EEC4D980023 /* Pods-XMTestTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -313,8 +321,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				74880D9A244A22AA00A9D676 /* WelcomeViewController.swift in Sources */,
 				74880D912449E98900A9D676 /* AppCoordinator.swift in Sources */,
 				74880D94244A0DC200A9D676 /* WelcomeViewModel.swift in Sources */,
+				74880D96244A1D5000A9D676 /* AppState.swift in Sources */,
+				74880D98244A215000A9D676 /* WelcomeCoordinator.swift in Sources */,
 				74880D8F2449E3CD00A9D676 /* Coordinator.swift in Sources */,
 				74880D702449083200A9D676 /* ViewController.swift in Sources */,
 				74880D6C2449083200A9D676 /* AppDelegate.swift in Sources */,
