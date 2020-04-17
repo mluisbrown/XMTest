@@ -10,11 +10,12 @@ class AppCoordinator: Coordinator {
         self.rootViewController = UINavigationController()
 
         let vc = ViewController()
-        
+        vc.view.backgroundColor = .cyan
+        rootViewController.pushViewController(vc, animated: false)
     }
 
-
     func start() {
-        <#code#>
+        window.rootViewController = rootViewController
+        window.makeKeyAndVisible()
     }
 }

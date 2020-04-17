@@ -1,0 +1,35 @@
+PODS:
+  - ReactiveCocoa (10.2.0):
+    - ReactiveSwift (~> 6.2)
+  - ReactiveFeedback (0.8.0):
+    - ReactiveSwift (~> 6.0)
+  - ReactiveSwift (6.2.1)
+
+DEPENDENCIES:
+  - ReactiveCocoa (~> 10.0)
+  - ReactiveFeedback (from `https://github.com/babylonhealth/ReactiveFeedback.git`, branch `develop`)
+  - ReactiveSwift (~> 6.0)
+
+SPEC REPOS:
+  trunk:
+    - ReactiveCocoa
+    - ReactiveSwift
+
+EXTERNAL SOURCES:
+  ReactiveFeedback:
+    :branch: develop
+    :git: https://github.com/babylonhealth/ReactiveFeedback.git
+
+CHECKOUT OPTIONS:
+  ReactiveFeedback:
+    :commit: d7ce36f14bd7f1b0549fac9508fb9b157950e543
+    :git: https://github.com/babylonhealth/ReactiveFeedback.git
+
+SPEC CHECKSUMS:
+  ReactiveCocoa: a123c42f449c552460a4ee217dd49c76a17c8204
+  ReactiveFeedback: 9fd080d97f8c8c11c7cf2426ffbcd58e6d9cb7cb
+  ReactiveSwift: 07ddf579f4eb3ee3bd656214f0461aaf2c0fd639
+
+PODFILE CHECKSUM: d27a9261ea76f8600a3d5a234d6de004d1c8faf9
+
+COCOAPODS: 1.8.4
