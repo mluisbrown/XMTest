@@ -13,13 +13,15 @@
 		74880D702449083200A9D676 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D6F2449083200A9D676 /* ViewController.swift */; };
 		74880D752449083200A9D676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74880D742449083200A9D676 /* Assets.xcassets */; };
 		74880D782449083200A9D676 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 74880D762449083200A9D676 /* LaunchScreen.storyboard */; };
-		74880D832449083200A9D676 /* XMTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D822449083200A9D676 /* XMTestTests.swift */; };
 		74880D8F2449E3CD00A9D676 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D8E2449E3CD00A9D676 /* Coordinator.swift */; };
 		74880D912449E98900A9D676 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D902449E98900A9D676 /* AppCoordinator.swift */; };
 		74880D94244A0DC200A9D676 /* WelcomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D93244A0DC200A9D676 /* WelcomeViewModel.swift */; };
 		74880D96244A1D5000A9D676 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D95244A1D5000A9D676 /* AppState.swift */; };
 		74880D98244A215000A9D676 /* WelcomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D97244A215000A9D676 /* WelcomeCoordinator.swift */; };
 		74880D9A244A22AA00A9D676 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D99244A22AA00A9D676 /* WelcomeViewController.swift */; };
+		74880D9C244A4F1900A9D676 /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D9B244A4F1900A9D676 /* With.swift */; };
+		74880D9E244A530400A9D676 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D9D244A530400A9D676 /* Command.swift */; };
+		74880DA0244A64B400A9D676 /* WelcomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D9F244A64B400A9D676 /* WelcomeViewControllerTests.swift */; };
 		EDE8F0A408148E285A6C3CE2 /* Pods_XMTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0039B1C2F6BF27E739647A69 /* Pods_XMTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -46,7 +48,6 @@
 		74880D772449083200A9D676 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		74880D792449083200A9D676 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74880D7E2449083200A9D676 /* XMTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XMTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		74880D822449083200A9D676 /* XMTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMTestTests.swift; sourceTree = "<group>"; };
 		74880D842449083200A9D676 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		74880D8E2449E3CD00A9D676 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		74880D902449E98900A9D676 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
@@ -54,6 +55,9 @@
 		74880D95244A1D5000A9D676 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		74880D97244A215000A9D676 /* WelcomeCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeCoordinator.swift; sourceTree = "<group>"; };
 		74880D99244A22AA00A9D676 /* WelcomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		74880D9B244A4F1900A9D676 /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
+		74880D9D244A530400A9D676 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
+		74880D9F244A64B400A9D676 /* WelcomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewControllerTests.swift; sourceTree = "<group>"; };
 		97AFDE1174D44EEC4D980023 /* Pods-XMTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTestTests.release.xcconfig"; path = "Target Support Files/Pods-XMTestTests/Pods-XMTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		DC4EFE8F173F45F0F2D58EC9 /* Pods-XMTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTest.debug.xcconfig"; path = "Target Support Files/Pods-XMTest/Pods-XMTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +124,8 @@
 				74880D742449083200A9D676 /* Assets.xcassets */,
 				74880D762449083200A9D676 /* LaunchScreen.storyboard */,
 				74880D792449083200A9D676 /* Info.plist */,
+				74880D9D244A530400A9D676 /* Command.swift */,
+				74880D9B244A4F1900A9D676 /* With.swift */,
 			);
 			path = XMTest;
 			sourceTree = "<group>";
@@ -127,8 +133,8 @@
 		74880D812449083200A9D676 /* XMTestTests */ = {
 			isa = PBXGroup;
 			children = (
-				74880D822449083200A9D676 /* XMTestTests.swift */,
 				74880D842449083200A9D676 /* Info.plist */,
+				74880D9F244A64B400A9D676 /* WelcomeViewControllerTests.swift */,
 			);
 			path = XMTestTests;
 			sourceTree = "<group>";
@@ -184,6 +190,7 @@
 				74880D7A2449083200A9D676 /* Sources */,
 				74880D7B2449083200A9D676 /* Frameworks */,
 				74880D7C2449083200A9D676 /* Resources */,
+				E33C17EE0B3CAE5E2AB560C2 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,6 +321,23 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E33C17EE0B3CAE5E2AB560C2 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-XMTestTests/Pods-XMTestTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-XMTestTests/Pods-XMTestTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-XMTestTests/Pods-XMTestTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -326,9 +350,11 @@
 				74880D94244A0DC200A9D676 /* WelcomeViewModel.swift in Sources */,
 				74880D96244A1D5000A9D676 /* AppState.swift in Sources */,
 				74880D98244A215000A9D676 /* WelcomeCoordinator.swift in Sources */,
+				74880D9C244A4F1900A9D676 /* With.swift in Sources */,
 				74880D8F2449E3CD00A9D676 /* Coordinator.swift in Sources */,
 				74880D702449083200A9D676 /* ViewController.swift in Sources */,
 				74880D6C2449083200A9D676 /* AppDelegate.swift in Sources */,
+				74880D9E244A530400A9D676 /* Command.swift in Sources */,
 				74880D6E2449083200A9D676 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -337,7 +363,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				74880D832449083200A9D676 /* XMTestTests.swift in Sources */,
+				74880DA0244A64B400A9D676 /* WelcomeViewControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -519,8 +545,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 12DC2F5DD0B344714F9A439D /* Pods-XMTestTests.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XMTest.app/XMTest";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KFKA7LMAN6;
 				INFOPLIST_FILE = XMTestTests/Info.plist;
@@ -542,8 +568,8 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 97AFDE1174D44EEC4D980023 /* Pods-XMTestTests.release.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = "$(inherited)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/XMTest.app/XMTest";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KFKA7LMAN6;
 				INFOPLIST_FILE = XMTestTests/Info.plist;

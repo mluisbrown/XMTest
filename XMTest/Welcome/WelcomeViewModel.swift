@@ -19,6 +19,11 @@ enum WelcomeViewModel {
     }
 
     static func reduce(state: inout State, event: Event) {
-        
+        print("event: \(event)")
+
+        switch event {
+        case .startSurvey:
+            state.status = .loading
+        }
     }
 }

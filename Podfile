@@ -13,6 +13,7 @@ target 'XMTest' do
   target 'XMTestTests' do
     inherit! :search_paths
     # Pods for testing
+    pod 'SnapshotTesting', '~> 1.7'
   end
 
 end

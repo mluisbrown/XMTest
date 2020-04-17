@@ -5,6 +5,7 @@ import ReactiveFeedback
 class WelcomeCoordinator: Coordinator {
 
     private let presenter: UINavigationController
+    private var welcomeViewController: WelcomeViewController?
     private let store: Store<WelcomeViewModel.State, WelcomeViewModel.Event>
 
     init(
@@ -16,8 +17,11 @@ class WelcomeCoordinator: Coordinator {
     }
 
     func start() {
-        <#code#>
-    }
+        let welcomeViewController = WelcomeViewController(store: store)
+        welcomeViewController.title = "Welcome"
 
+        presenter.pushViewController(welcomeViewController, animated: true)
+        self.welcomeViewController = welcomeViewController
+    }
 }
 

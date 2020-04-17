@@ -5,6 +5,7 @@ import ReactiveFeedback
 class AppCoordinator: Coordinator {
     private let window: UIWindow
     private let rootViewController: UINavigationController
+    private let welcomeCoordinator: WelcomeCoordinator
     private let store: Store<State, Event>
 
     init(window: UIWindow) {
@@ -26,19 +27,22 @@ class AppCoordinator: Coordinator {
 //                event: Event.movies
 //            )
 //        )
+
         store = Store(
             initial: State(),
             reducer: appReducer,
             feedbacks: []
         )
 
-        let vc = ViewController()
-        vc.view.backgroundColor = .cyan
-        rootViewController.pushViewController(vc, animated: false)
+        welcomeCoordinator = WelcomeCoordinator(
+            presenter: rootViewController,
+            store: store.view(value: \.welcome, event: Event.welcome)
+        )
     }
 
     func start() {
         window.rootViewController = rootViewController
+        welcomeCoordinator.start()
         window.makeKeyAndVisible()
     }
 }
