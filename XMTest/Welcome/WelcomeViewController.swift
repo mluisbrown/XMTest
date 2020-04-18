@@ -81,6 +81,10 @@ final class WelcomeView: UIView {
             isLoading = true
         }
 
+        if case let .loaded(questions) = context.status {
+            dump(questions)
+        }
+
         startSurvey.action = {
             context.send(event: .startSurvey)
         }

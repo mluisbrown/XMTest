@@ -20,23 +20,23 @@ class AppCoordinator: Coordinator {
             )
         )
 
-//        let appFeedbacks: FeedbackLoop<State, Event>.Feedback = FeedbackLoop<State, Event>.Feedback.combine(
-//            FeedbackLoop<State, Event>.Feedback.pullback(
-//                feedback: Movies.feedback,
-//                value: \.movies,
-//                event: Event.movies
-//            )
-//        )
+        let appFeedbacks: FeedbackLoop<State, Event>.Feedback = FeedbackLoop<State, Event>.Feedback.combine(
+            FeedbackLoop<State, Event>.Feedback.pullback(
+                feedback: WelcomeViewModel.feedback,
+                value: \.welcome,
+                event: Event.welcome
+            )
+        )
 
         store = Store(
             initial: State(),
             reducer: appReducer,
-            feedbacks: []
+            feedbacks: [appFeedbacks]
         )
 
         welcomeCoordinator = WelcomeCoordinator(
             presenter: rootViewController,
-            store: store.view(value: \.welcome, event: Event.welcome)
+            store: store
         )
     }
 

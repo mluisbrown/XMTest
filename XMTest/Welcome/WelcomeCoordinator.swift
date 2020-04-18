@@ -6,18 +6,21 @@ class WelcomeCoordinator: Coordinator {
 
     private let presenter: UINavigationController
     private var welcomeViewController: WelcomeViewController?
-    private let store: Store<WelcomeViewModel.State, WelcomeViewModel.Event>
+    private let store: Store<State, Event>
 
     init(
         presenter: UINavigationController,
-        store: Store<WelcomeViewModel.State, WelcomeViewModel.Event>
+        store: Store<State, Event>
     ) {
         self.presenter = presenter
         self.store = store
     }
 
     func start() {
-        let welcomeViewController = WelcomeViewController(store: store)
+        let welcomeStore = store.view(value: \.welcome, event: Event.welcome)
+        let welcomeViewController = WelcomeViewController(
+            store: welcomeStore
+        )
         welcomeViewController.title = "Welcome"
 
         presenter.pushViewController(welcomeViewController, animated: true)
