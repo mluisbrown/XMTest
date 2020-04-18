@@ -9,6 +9,7 @@ target 'XMTest' do
   pod 'ReactiveCocoa', '~> 10.0'
   pod 'ReactiveFeedback', :git => 'https://github.com/babylonhealth/ReactiveFeedback.git', :branch => 'develop'
   pod 'SnapKit', '~> 5.0'
+  pod 'Tagged', '~> 0.5'
 
   target 'XMTestTests' do
     inherit! :search_paths

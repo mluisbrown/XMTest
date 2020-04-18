@@ -54,7 +54,6 @@ final class WelcomeView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-
         backgroundColor = .lightGray
 
         startSurveyButton.addTarget(self, action: #selector(startSurveyPressed), for: .primaryActionTriggered)
@@ -76,7 +75,7 @@ final class WelcomeView: UIView {
 
     func render(context: Context<WelcomeViewModel.State, WelcomeViewModel.Event>) {
         switch context.status {
-        case .initial:
+        case .initial, .loaded:
             isLoading = false
         case .loading:
             isLoading = true

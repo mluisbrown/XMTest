@@ -6,6 +6,7 @@ PODS:
   - ReactiveSwift (6.2.1)
   - SnapKit (5.0.1)
   - SnapshotTesting (1.7.2)
+  - Tagged (0.5.0)
 
 DEPENDENCIES:
   - ReactiveCocoa (~> 10.0)
@@ -13,6 +14,7 @@ DEPENDENCIES:
   - ReactiveSwift (~> 6.0)
   - SnapKit (~> 5.0)
   - SnapshotTesting (~> 1.7)
+  - Tagged (~> 0.5)
 
 SPEC REPOS:
   trunk:
@@ -20,6 +22,7 @@ SPEC REPOS:
     - ReactiveSwift
     - SnapKit
     - SnapshotTesting
+    - Tagged
 
 EXTERNAL SOURCES:
   ReactiveFeedback:
@@ -37,7 +40,8 @@ SPEC CHECKSUMS:
   ReactiveSwift: 07ddf579f4eb3ee3bd656214f0461aaf2c0fd639
   SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SnapshotTesting: 8caa6661fea7c8019d5b46de77c16bab99c36c5c
+  Tagged: 8d3ac5d5c6dfbc35ec95c1ad45a0f7c79d0fdd27
 
-PODFILE CHECKSUM: d7d8fb73bb78007a840a9bffd0ab468fef346b67
+PODFILE CHECKSUM: 38f45b7a32dc8951ac6162a4bbd4b683adb5820f
 
 COCOAPODS: 1.8.4
