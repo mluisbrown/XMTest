@@ -76,8 +76,7 @@ final class WelcomeView: UIView {
 
     func render(context: Context<WelcomeViewModel.State, WelcomeViewModel.Event>) {
         switch context.status {
-        case .initial,
-             .loaded:
+        case .initial:
             isLoading = false
         case .loading:
             isLoading = true

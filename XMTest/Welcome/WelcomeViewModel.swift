@@ -5,13 +5,11 @@ import ReactiveFeedback
 enum WelcomeViewModel {
     struct State {
         var status: Status = .initial
-
     }
 
     enum Status {
         case initial
         case loading
-        case loaded
     }
 
     enum Event {

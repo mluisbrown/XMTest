@@ -22,6 +22,7 @@
 		74880D9C244A4F1900A9D676 /* With.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D9B244A4F1900A9D676 /* With.swift */; };
 		74880D9E244A530400A9D676 /* Command.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D9D244A530400A9D676 /* Command.swift */; };
 		74880DA0244A64B400A9D676 /* WelcomeViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D9F244A64B400A9D676 /* WelcomeViewControllerTests.swift */; };
+		7490EAF3244B069100C48B78 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7490EAF2244B069100C48B78 /* main.swift */; };
 		EDE8F0A408148E285A6C3CE2 /* Pods_XMTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0039B1C2F6BF27E739647A69 /* Pods_XMTest.framework */; };
 /* End PBXBuildFile section */
 
@@ -58,6 +59,7 @@
 		74880D9B244A4F1900A9D676 /* With.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = With.swift; sourceTree = "<group>"; };
 		74880D9D244A530400A9D676 /* Command.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Command.swift; sourceTree = "<group>"; };
 		74880D9F244A64B400A9D676 /* WelcomeViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewControllerTests.swift; sourceTree = "<group>"; };
+		7490EAF2244B069100C48B78 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		97AFDE1174D44EEC4D980023 /* Pods-XMTestTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTestTests.release.xcconfig"; path = "Target Support Files/Pods-XMTestTests/Pods-XMTestTests.release.xcconfig"; sourceTree = "<group>"; };
 		DC4EFE8F173F45F0F2D58EC9 /* Pods-XMTest.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTest.debug.xcconfig"; path = "Target Support Files/Pods-XMTest/Pods-XMTest.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -126,6 +128,7 @@
 				74880D792449083200A9D676 /* Info.plist */,
 				74880D9D244A530400A9D676 /* Command.swift */,
 				74880D9B244A4F1900A9D676 /* With.swift */,
+				7490EAF2244B069100C48B78 /* main.swift */,
 			);
 			path = XMTest;
 			sourceTree = "<group>";
@@ -347,6 +350,7 @@
 			files = (
 				74880D9A244A22AA00A9D676 /* WelcomeViewController.swift in Sources */,
 				74880D912449E98900A9D676 /* AppCoordinator.swift in Sources */,
+				7490EAF3244B069100C48B78 /* main.swift in Sources */,
 				74880D94244A0DC200A9D676 /* WelcomeViewModel.swift in Sources */,
 				74880D96244A1D5000A9D676 /* AppState.swift in Sources */,
 				74880D98244A215000A9D676 /* WelcomeCoordinator.swift in Sources */,
