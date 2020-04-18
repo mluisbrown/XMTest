@@ -1,4 +1,5 @@
 PODS:
+  - Nimble (8.0.7)
   - ReactiveCocoa (10.2.0):
     - ReactiveSwift (~> 6.2)
   - ReactiveFeedback (0.8.0):
@@ -9,6 +10,7 @@ PODS:
   - Tagged (0.5.0)
 
 DEPENDENCIES:
+  - Nimble (~> 8.0)
   - ReactiveCocoa (~> 10.0)
   - ReactiveFeedback (from `https://github.com/babylonhealth/ReactiveFeedback.git`, branch `develop`)
   - ReactiveSwift (~> 6.0)
@@ -18,6 +20,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Nimble
     - ReactiveCocoa
     - ReactiveSwift
     - SnapKit
@@ -35,6 +38,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/babylonhealth/ReactiveFeedback.git
 
 SPEC CHECKSUMS:
+  Nimble: a73af6ecd4c9106f434f3d55fc54570be3739e0b
   ReactiveCocoa: a123c42f449c552460a4ee217dd49c76a17c8204
   ReactiveFeedback: 9fd080d97f8c8c11c7cf2426ffbcd58e6d9cb7cb
   ReactiveSwift: 07ddf579f4eb3ee3bd656214f0461aaf2c0fd639
@@ -42,6 +46,6 @@ SPEC CHECKSUMS:
   SnapshotTesting: 8caa6661fea7c8019d5b46de77c16bab99c36c5c
   Tagged: 8d3ac5d5c6dfbc35ec95c1ad45a0f7c79d0fdd27
 
-PODFILE CHECKSUM: 38f45b7a32dc8951ac6162a4bbd4b683adb5820f
+PODFILE CHECKSUM: 7dcaeb431c7f21e9f39782aff0b24422b5dcd2ec
 
 COCOAPODS: 1.8.4

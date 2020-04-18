@@ -13,22 +13,22 @@ class WelcomeViewControllerTests: XCTestCase {
     }
 
     func testInitial() {
-        let vc = makeViewControllerFor(status: .initial)
+        let vc = makeViewController(for: .initial)
         assertSnapshot(matching: vc, as: .image)
     }
 
     func testLoading() {
-        let vc = makeViewControllerFor(status: .loading)
+        let vc = makeViewController(for: .loading)
         assertSnapshot(matching: vc, as: .image)
     }
 
-    private func makeViewControllerFor(
-        status: WelcomeViewModel.Status
+    private func makeViewController(
+        for status: WelcomeViewModel.Status
     ) -> WelcomeViewController {
-        return WelcomeViewController(
+        WelcomeViewController(
             store: Store(
                 initial: WelcomeViewModel.State.init(status: status),
-                reducer: WelcomeViewModel.reduce,
+                reducer: WelcomeViewModel.reducer,
                 feedbacks: []
             )
         )

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1BD4CDAA865F31D22FDFDDDF /* Pods_XMTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3072D18EFF9A07204F3A1DE0 /* Pods_XMTestTests.framework */; };
+		7480D35C244B37E40001625E /* WelcomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480D35B244B37E40001625E /* WelcomeViewModelTests.swift */; };
 		74880D6C2449083200A9D676 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D6B2449083200A9D676 /* AppDelegate.swift */; };
 		74880D6E2449083200A9D676 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74880D6D2449083200A9D676 /* SceneDelegate.swift */; };
 		74880D752449083200A9D676 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 74880D742449083200A9D676 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		12DC2F5DD0B344714F9A439D /* Pods-XMTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTestTests.debug.xcconfig"; path = "Target Support Files/Pods-XMTestTests/Pods-XMTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3072D18EFF9A07204F3A1DE0 /* Pods_XMTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41868DDB54AAA2BAC11395DB /* Pods-XMTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTest.release.xcconfig"; path = "Target Support Files/Pods-XMTest/Pods-XMTest.release.xcconfig"; sourceTree = "<group>"; };
+		7480D35B244B37E40001625E /* WelcomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModelTests.swift; sourceTree = "<group>"; };
 		74880D682449083200A9D676 /* XMTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		74880D6B2449083200A9D676 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		74880D6D2449083200A9D676 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -95,6 +97,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		7480D35A244B37B10001625E /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				74880D9F244A64B400A9D676 /* WelcomeViewControllerTests.swift */,
+				7480D35B244B37E40001625E /* WelcomeViewModelTests.swift */,
+			);
+			path = Tests;
+			sourceTree = "<group>";
+		};
 		74880D5F2449083200A9D676 = {
 			isa = PBXGroup;
 			children = (
@@ -137,7 +148,6 @@
 			isa = PBXGroup;
 			children = (
 				74880D842449083200A9D676 /* Info.plist */,
-				74880D9F244A64B400A9D676 /* WelcomeViewControllerTests.swift */,
 			);
 			path = XMTestTests;
 			sourceTree = "<group>";
@@ -145,6 +155,7 @@
 		74880D92244A0C9200A9D676 /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				7480D35A244B37B10001625E /* Tests */,
 				74880D93244A0DC200A9D676 /* WelcomeViewModel.swift */,
 				74880D97244A215000A9D676 /* WelcomeCoordinator.swift */,
 				74880D99244A22AA00A9D676 /* WelcomeViewController.swift */,
@@ -388,6 +399,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				74880DA0244A64B400A9D676 /* WelcomeViewControllerTests.swift in Sources */,
+				7480D35C244B37E40001625E /* WelcomeViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

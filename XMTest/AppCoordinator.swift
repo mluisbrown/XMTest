@@ -14,7 +14,7 @@ class AppCoordinator: Coordinator {
 
         let appReducer: Reducer<State, Event> = combine(
             pullback(
-                WelcomeViewModel.reduce,
+                WelcomeViewModel.reducer,
                 value: \.welcome,
                 event: \.welcome
             )

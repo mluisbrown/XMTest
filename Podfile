@@ -15,6 +15,7 @@ target 'XMTest' do
     inherit! :search_paths
     # Pods for testing
     pod 'SnapshotTesting', '~> 1.7'
+    pod 'Nimble', '~> 8.0'
   end
 
 end

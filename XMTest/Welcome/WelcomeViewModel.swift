@@ -7,7 +7,7 @@ enum WelcomeViewModel {
         var status: Status = .initial
     }
 
-    enum Status {
+    enum Status: Equatable {
         case initial
         case loading
         case loaded([Question])
@@ -18,9 +18,7 @@ enum WelcomeViewModel {
         case loaded([Question])
     }
 
-    static func reduce(state: inout State, event: Event) {
-        print("event: \(event)")
-
+    static func reducer(state: inout State, event: Event) {
         switch event {
         case .startSurvey:
             state.status = .loading
@@ -29,3 +27,5 @@ enum WelcomeViewModel {
         }
     }
 }
+
+typealias WelcomeStore = Store<WelcomeViewModel.State, WelcomeViewModel.Event>
