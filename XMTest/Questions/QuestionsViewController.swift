@@ -1,6 +1,7 @@
 import UIKit
 import SnapKit
 import ReactiveFeedback
+import ReactiveCocoa
 
 final class QuestionsViewController: UIViewController {
     private let store: Store<QuestionsViewModel.State, QuestionsViewModel.Event>
@@ -30,10 +31,15 @@ final class QuestionsViewController: UIViewController {
 }
 
 final class QuestionsView: UIView {
-    private let statusLabel = UILabel().with {
-        $0.text = "Questions submitted: 0"
+    enum BannerState {
+        case success
+        case failure
     }
 
+    private let bannerView = BannerView().with {
+        $0.alpha = 0
+    }
+    private let statusLabel = UILabel()
     private let questionLabel = UILabel().with {
         $0.numberOfLines = 0
     }
@@ -48,8 +54,6 @@ final class QuestionsView: UIView {
         $0.backgroundColor = .white
         $0.contentEdgeInsets = UIEdgeInsets(top: 8, left: 32, bottom: 8, right: 32)
         $0.layer.cornerRadius = 4
-        $0.setContentHuggingPriority(.defaultHigh, for: .horizontal)
-        $0.setContentHuggingPriority(.required, for: .vertical)
     }
 
     private let activityIndicator = UIActivityIndicatorView().with {
@@ -82,6 +86,7 @@ final class QuestionsView: UIView {
     private let submitAnswer = Command()
     private let previousQuestion = Command()
     private let nextQuestion = Command()
+    private let answerChanged = CommandWith<String>()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -94,6 +99,15 @@ final class QuestionsView: UIView {
         setupQuestionLabel()
         setupAnswerTextfield()
         setupSubmitButton()
+
+        addSubview(bannerView)
+        bannerView.snp.makeConstraints { make in
+            make.edges.equalTo(self)
+        }
+    }
+
+    public required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     private func setupStatusView() {
@@ -142,21 +156,17 @@ final class QuestionsView: UIView {
             make.top.equalTo(questionLabel).offset(64)
             make.leading.equalTo(self).offset(16)
         }
-    }
 
-    public required init(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        answerTextfield.reactive.continuousTextValues
+            .observeValues { [weak self] text in
+                self?.answerChanged.action(text)
+            }
     }
 
     func render(context: Context<QuestionsViewModel.State, QuestionsViewModel.Event>) {
-        if let navigationItem = navigationItem {
-            navigationItem.title = context.questions.isEmpty
-                ? "Questions"
-                : "Question \(context.questionIndex + 1)/\(context.questions.count)"
-            navigationItem.rightBarButtonItems = [nextButton, previousButton]
-            previousButton.isEnabled = context.questionIndex > 0
-            nextButton.isEnabled = context.questionIndex < context.questions.count - 1
-        }
+        bindActions(context)
+        renderNavigationBar(context)
+        renderBanner(context)
 
         switch context.status {
         case .submitting:
@@ -165,6 +175,75 @@ final class QuestionsView: UIView {
             isSubmitting = false
         }
 
+        guard context.questions.isEmpty == false else {
+            renderNoQuestions()
+            return
+        }
+
+        renderQuestion(context)
+    }
+
+    private func renderBanner(_ context: Context<QuestionsViewModel.State, QuestionsViewModel.Event>) {
+        let hide: Bool
+
+        switch context.status {
+        case .submitSuccess:
+            bannerView.configureBanner(for: .success, retryTarget: self, retrySelector: #selector(submitPressed))
+            hide = false
+        case .submitFailure:
+            bannerView.configureBanner(for: .failure, retryTarget: self, retrySelector: #selector(submitPressed))
+            hide = false
+        default:
+            hide = true
+        }
+
+        UIView.animate(withDuration: 0.25) { [bannerView] in
+            bannerView.alpha = hide ? 0 : 1
+        }
+    }
+
+    private func renderNavigationBar(_ context: Context<QuestionsViewModel.State, QuestionsViewModel.Event>) {
+        if let navigationItem = navigationItem {
+            navigationItem.title = context.questions.isEmpty
+                ? "Questions"
+                : "Question \(context.questionIndex + 1)/\(context.questions.count)"
+            navigationItem.rightBarButtonItems = [nextButton, previousButton]
+            previousButton.isEnabled = context.questionIndex > 0
+            nextButton.isEnabled = context.questionIndex < context.questions.count - 1
+        }
+    }
+
+    private func renderNoQuestions() {
+        statusLabel.text = "No questions loaded"
+        questionLabel.text = nil
+        answerTextfield.text = nil
+        answerTextfield.placeholder = nil
+    }
+
+    private func renderQuestion(_ context: Context<QuestionsViewModel.State, QuestionsViewModel.Event>) {
+        statusLabel.text = "Questions submitted: \(context.submittedCount)"
+
+        let question = context.questions[context.questionIndex]
+        questionLabel.text = question.question
+
+        if let answer = question.answer {
+            answerTextfield.text = nil
+            answerTextfield.placeholder = answer
+            answerTextfield.isEnabled = false
+
+            submitButton.setTitle("Already submitted", for: .normal)
+            submitButton.isEnabled = false
+        } else {
+            answerTextfield.text = context.answerText
+            answerTextfield.placeholder = "Type your answer here..."
+            answerTextfield.isEnabled = true
+
+            submitButton.setTitle("Submit", for: .normal)
+            submitButton.isEnabled = context.answerText.isEmpty == false
+        }
+    }
+
+    private func bindActions(_ context: Context<QuestionsViewModel.State, QuestionsViewModel.Event>) {
         nextQuestion.action = {
             context.send(event: .nextQuestion)
         }
@@ -174,27 +253,19 @@ final class QuestionsView: UIView {
         }
 
         submitAnswer.action = {
-            context.send(event: .submitAnswer(Answer(id: 1, answer: "Dummy answer")))
+            let answer: Answer = context.answer.map { $0 } ??
+                Answer(
+                    id: context.questions[context.questionIndex].id,
+                    answer: context.answerText
+                )
+
+            context.send(event: .submitAnswer(answer))
         }
 
-        guard context.questions.isEmpty == false else { return }
-
-        let question = context.questions[context.questionIndex]
-        questionLabel.text = question.question
-
-        if let answer = question.answer {
-            answerTextfield.text = answer
-            answerTextfield.isEnabled = false
-
-            submitButton.setTitle("Already submitted", for: .normal)
-            submitButton.isEnabled = false
-
-        } else {
-            answerTextfield.placeholder = "Type your answer here..."
-            answerTextfield.isEnabled = true
-
-            submitButton.setTitle("Submit", for: .normal)
-            submitButton.isEnabled = true
+        answerChanged.action = { text in
+            DispatchQueue.main.async {
+                context.send(event: .answerChanged(text))
+            }
         }
     }
 
@@ -211,5 +282,73 @@ final class QuestionsView: UIView {
     @objc
     private func nextPressed() {
         nextQuestion.action()
+    }
+}
+
+class BannerView: UIView {
+    private let banner = UIView()
+    private let label = UILabel()
+    private let button = UIButton(type: .custom).with {
+        $0.setTitle("Retry", for: .normal)
+        $0.setTitleColor(.black, for: .normal)
+        $0.setTitleColor(.lightGray, for: .highlighted)
+        $0.backgroundColor = .clear
+        $0.contentEdgeInsets = UIEdgeInsets(top: 8, left: 32, bottom: 8, right: 32)
+        $0.layer.cornerRadius = 4
+        $0.layer.borderColor = UIColor.lightGray.cgColor
+        $0.layer.borderWidth = 1
+    }
+
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        backgroundColor = UIColor.black.withAlphaComponent(0.2)
+
+        setupBanner()
+    }
+
+    required init(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+
+    func configureBanner(
+        for state: QuestionsView.BannerState,
+        retryTarget: Any?,
+        retrySelector: Selector
+    ) {
+        button.addTarget(retryTarget, action: retrySelector, for: .primaryActionTriggered)
+
+        switch state {
+        case .failure:
+            banner.backgroundColor = .red
+            button.isHidden = false
+            label.text = "Failure!"
+        case .success:
+            banner.backgroundColor = .green
+            button.isHidden = true
+            label.text = "Success"
+        }
+    }
+
+    private func setupBanner() {
+        let stack = UIStackView(arrangedSubviews: [label, button]).with {
+            $0.axis = .horizontal
+            $0.distribution = .equalSpacing
+            $0.layoutMargins = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
+            $0.isLayoutMarginsRelativeArrangement = true
+        }
+
+        banner.addSubview(stack)
+        stack.snp.makeConstraints { make in
+            make.width.equalTo(banner)
+            make.centerY.equalTo(banner)
+            make.height.equalTo(32)
+        }
+
+        addSubview(banner)
+        banner.snp.makeConstraints { make in
+            make.width.equalTo(self)
+            make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
+            make.height.equalTo(128)
+        }
     }
 }

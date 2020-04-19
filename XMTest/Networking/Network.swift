@@ -87,3 +87,43 @@ final class Network {
         self.session.invalidateAndCancel()
     }
 }
+
+#if DEBUG
+final class MockNetwork {
+    private let submitShouldFail: Bool
+
+    init(submitFails: Bool = false) {
+        self.submitShouldFail = submitFails
+    }
+
+    func makeRequest(_ resource: Resource) -> Response {
+        let questions = [
+            Question(id: 1, question: "What's your name?"),
+            Question(id: 2, question: "How old are you?")
+        ]
+
+        let urlResponse = HTTPURLResponse(
+            url: URL(string: "http://test.com")!,
+            statusCode: 200,
+            httpVersion: nil,
+            headerFields: nil
+        )!
+
+        let response: Response
+        switch resource.path {
+        case API.Endpoints.questions.rawValue:
+            let data = try! JSONEncoder().encode(questions)
+            response = SignalProducer.init(value: (data, urlResponse))
+        case API.Endpoints.submit.rawValue:
+            response = submitShouldFail ?
+                SignalProducer.init(error: .server(400, nil)) :
+                SignalProducer.init(value: (Data(), urlResponse))
+        default:
+            response = SignalProducer.init(error: .server(404, nil))
+        }
+
+        return response.observe(on: QueueScheduler.main)
+    }
+}
+#endif
+

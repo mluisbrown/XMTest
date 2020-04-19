@@ -18,10 +18,25 @@ extension World {
             makeAPIRequest: network.makeRequest(_:)
         )
     }
+
+    static var mock: World {
+        let network = MockNetwork()
+        return World(
+            makeAPIRequest: network.makeRequest(_:)
+        )
+    }
+
+    static var failingMock: World {
+        let network = MockNetwork(submitFails: true)
+        return World(
+            makeAPIRequest: network.makeRequest(_:)
+        )
+    }
 }
 
 #if DEBUG
-var Current: World = .production
+//var Current: World = .production
+var Current: World = .mock
 #else
 let Current: World = .production
 #endif
