@@ -27,4 +27,3 @@ class WelcomeCoordinator: Coordinator {
         self.welcomeViewController = welcomeViewController
     }
 }
-
