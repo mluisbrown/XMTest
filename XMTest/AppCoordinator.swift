@@ -8,6 +8,8 @@ class AppCoordinator: Coordinator {
     private let welcomeCoordinator: WelcomeCoordinator
     private let store: Store<State, Event>
 
+    private let logEvents: Signal<Context<State, Event>, Never>
+
     init(window: UIWindow) {
         self.window = window
         self.rootViewController = UINavigationController()
@@ -17,6 +19,11 @@ class AppCoordinator: Coordinator {
                 WelcomeViewModel.reducer,
                 value: \.welcome,
                 event: \.welcome
+            ),
+            pullback(
+                QuestionsViewModel.reducer,
+                value: \.questions,
+                event: \.questions
             )
         )
 
@@ -33,6 +40,8 @@ class AppCoordinator: Coordinator {
             reducer: appReducer,
             feedbacks: [appFeedbacks]
         )
+
+        logEvents = store.state.signal.logEvents()
 
         welcomeCoordinator = WelcomeCoordinator(
             presenter: rootViewController,

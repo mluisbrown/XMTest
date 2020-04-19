@@ -14,6 +14,15 @@ enum WelcomeViewModel {
                 return false
             }
         }
+
+        var route: Route? {
+            switch status {
+            case .loaded:
+                return .showQuestions
+            default:
+                return nil
+            }
+        }
     }
 
     enum Status: Equatable {
@@ -25,6 +34,11 @@ enum WelcomeViewModel {
     enum Event {
         case startSurvey
         case loaded([Question])
+        case reset
+    }
+
+    enum Route {
+        case showQuestions
     }
 
     static func reducer(state: inout State, event: Event) {
@@ -33,6 +47,8 @@ enum WelcomeViewModel {
             state.status = .loading
         case let .loaded(questions):
             state.status = .loaded(questions)
+        case .reset:
+            state.status = .initial
         }
     }
 

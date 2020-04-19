@@ -63,7 +63,7 @@ final class WelcomeView: UIView {
             make.center.equalTo(self)
         }
 
-        addSubview(activityIndicator)
+        startSurveyButton.addSubview(activityIndicator)
         activityIndicator.snp.makeConstraints { make in
             make.center.equalTo(startSurveyButton)
         }
@@ -79,10 +79,6 @@ final class WelcomeView: UIView {
             isLoading = false
         case .loading:
             isLoading = true
-        }
-
-        if case let .loaded(questions) = context.status {
-            dump(questions)
         }
 
         startSurvey.action = {
