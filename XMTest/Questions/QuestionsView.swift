@@ -211,7 +211,8 @@ final class QuestionsView: UIView {
             answerTextfield.isEnabled = true
 
             submitButton.setTitle("Submit", for: .normal)
-            submitButton.isEnabled = context.answerText.isEmpty == false
+            submitButton.isEnabled = context.answerText.isEmpty == false &&
+                isSubmitting == false
         }
     }
 

@@ -24,6 +24,8 @@ class WelcomeCoordinator: Coordinator {
             store: welcomeStore
         )
         welcomeViewController.title = "Welcome"
+        // remove "Welcome" from the back button of any
+        // pushed View Controller
         welcomeViewController
             .navigationItem.backBarButtonItem = UIBarButtonItem(
                 title: nil,
@@ -38,12 +40,14 @@ class WelcomeCoordinator: Coordinator {
                 switch status {
                 case let .loaded(questions):
                     self.store.send(event: .welcome(.reset))
+                    // pass the loaded questions to the Questions store
                     self.store.send(event: .questions(.loaded(questions)))
                 default:
                     break;
                 }
         }
 
+        // routing to the Questions screen
         welcomeStore.state.signal
             .compactMap(\.route)
             .observeValues { route in
