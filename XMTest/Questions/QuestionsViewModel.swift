@@ -62,6 +62,8 @@ enum QuestionsViewModel {
     }
 
     static func reducer(state: inout State, event: Event) {
+        print("Event: \(event)")
+
         switch event {
         case let .loaded(questions):
             state.status = .loaded
@@ -95,28 +97,30 @@ enum QuestionsViewModel {
         }
     }
 
-    static var feedback: FeedbackLoop<State, Event>.Feedback {
+    static func feedbacks
+        (_ scheduler: DateScheduler = QueueScheduler.main
+    ) -> FeedbackLoop<State, Event>.Feedback {
         return .combine(
-            submitFeedback(),
-            bannerFeedback()
+            submitFeedback(scheduler),
+            bannerFeedback(scheduler)
         )
     }
 
-    private static func submitFeedback() -> FeedbackLoop<State, Event>.Feedback {
+    private static func submitFeedback(_ scheduler: DateScheduler) -> FeedbackLoop<State, Event>.Feedback {
         return .init(lensing: { $0.submittingAnswer }) { answer in
             Current.api.submitAnswer(answer)
                 .map { Event.submitted(answer) }
                 .flatMapError { _ in
                     SignalProducer.init(value: .submitFailed(answer))
                 }
-                .observe(on: UIScheduler())
+                .observe(on: scheduler)
         }
     }
 
-    private static func bannerFeedback() -> FeedbackLoop<State, Event>.Feedback {
+    private static func bannerFeedback(_ scheduler: DateScheduler) -> FeedbackLoop<State, Event>.Feedback {
         return .init(predicate: { $0.showingBanner }) { state in
             SignalProducer.init(value: Event.hideBanner)
-                .delay(3, on: QueueScheduler.main)
+                .delay(3, on: scheduler)
         }
     }
 }

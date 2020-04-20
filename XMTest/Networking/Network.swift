@@ -92,16 +92,16 @@ final class Network {
 final class MockNetwork {
     private let submitShouldFail: Bool
 
+    static let mockQuestions = [
+        Question(id: 1, question: "What's your name?"),
+        Question(id: 2, question: "How old are you?")
+    ]
+
     init(submitFails: Bool = false) {
         self.submitShouldFail = submitFails
     }
 
     func makeRequest(_ resource: Resource) -> Response {
-        let questions = [
-            Question(id: 1, question: "What's your name?"),
-            Question(id: 2, question: "How old are you?")
-        ]
-
         let urlResponse = HTTPURLResponse(
             url: URL(string: "http://test.com")!,
             statusCode: 200,
@@ -112,7 +112,7 @@ final class MockNetwork {
         let response: Response
         switch resource.path {
         case API.Endpoints.questions.rawValue:
-            let data = try! JSONEncoder().encode(questions)
+            let data = try! JSONEncoder().encode(Self.mockQuestions)
             response = SignalProducer.init(value: (data, urlResponse))
         case API.Endpoints.submit.rawValue:
             response = submitShouldFail ?
@@ -122,7 +122,7 @@ final class MockNetwork {
             response = SignalProducer.init(error: .server(404, nil))
         }
 
-        return response.observe(on: QueueScheduler.main)
+        return response
     }
 }
 #endif

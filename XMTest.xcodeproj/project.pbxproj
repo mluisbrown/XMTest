@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1BD4CDAA865F31D22FDFDDDF /* Pods_XMTestTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3072D18EFF9A07204F3A1DE0 /* Pods_XMTestTests.framework */; };
+		745C0147244DACB5005D5796 /* QuestionsViewControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745C0146244DACB5005D5796 /* QuestionsViewControllerTests.swift */; };
+		745C0149244DACE9005D5796 /* QuestionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745C0148244DACE9005D5796 /* QuestionsView.swift */; };
+		745C014B244DAD89005D5796 /* BannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745C014A244DAD89005D5796 /* BannerView.swift */; };
+		745C014D244DAE3B005D5796 /* WelcomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745C014C244DAE3B005D5796 /* WelcomView.swift */; };
 		7480D35C244B37E40001625E /* WelcomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480D35B244B37E40001625E /* WelcomeViewModelTests.swift */; };
 		7480D35F244B6C2E0001625E /* Resource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480D35E244B6C2E0001625E /* Resource.swift */; };
 		7480D361244B6D9E0001625E /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7480D360244B6D9E0001625E /* Network.swift */; };
@@ -53,6 +57,10 @@
 		12DC2F5DD0B344714F9A439D /* Pods-XMTestTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTestTests.debug.xcconfig"; path = "Target Support Files/Pods-XMTestTests/Pods-XMTestTests.debug.xcconfig"; sourceTree = "<group>"; };
 		3072D18EFF9A07204F3A1DE0 /* Pods_XMTestTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_XMTestTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		41868DDB54AAA2BAC11395DB /* Pods-XMTest.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-XMTest.release.xcconfig"; path = "Target Support Files/Pods-XMTest/Pods-XMTest.release.xcconfig"; sourceTree = "<group>"; };
+		745C0146244DACB5005D5796 /* QuestionsViewControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsViewControllerTests.swift; sourceTree = "<group>"; };
+		745C0148244DACE9005D5796 /* QuestionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsView.swift; sourceTree = "<group>"; };
+		745C014A244DAD89005D5796 /* BannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerView.swift; sourceTree = "<group>"; };
+		745C014C244DAE3B005D5796 /* WelcomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomView.swift; sourceTree = "<group>"; };
 		7480D35B244B37E40001625E /* WelcomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeViewModelTests.swift; sourceTree = "<group>"; };
 		7480D35E244B6C2E0001625E /* Resource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Resource.swift; sourceTree = "<group>"; };
 		7480D360244B6D9E0001625E /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -150,6 +158,8 @@
 				7480D36E244C7D3B0001625E /* QuestionsCoordinator.swift */,
 				7480D36C244C52FF0001625E /* QuestionsViewModel.swift */,
 				7480D372244C7EF60001625E /* QuestionsViewController.swift */,
+				745C0148244DACE9005D5796 /* QuestionsView.swift */,
+				745C014A244DAD89005D5796 /* BannerView.swift */,
 			);
 			path = Questions;
 			sourceTree = "<group>";
@@ -158,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				7480D375244D1E080001625E /* QuestionsViewModelTests.swift */,
+				745C0146244DACB5005D5796 /* QuestionsViewControllerTests.swift */,
 			);
 			path = Tests;
 			sourceTree = "<group>";
@@ -217,6 +228,7 @@
 				74880D97244A215000A9D676 /* WelcomeCoordinator.swift */,
 				74880D93244A0DC200A9D676 /* WelcomeViewModel.swift */,
 				74880D99244A22AA00A9D676 /* WelcomeViewController.swift */,
+				745C014C244DAE3B005D5796 /* WelcomView.swift */,
 			);
 			path = Welcome;
 			sourceTree = "<group>";
@@ -444,6 +456,8 @@
 				74880D9A244A22AA00A9D676 /* WelcomeViewController.swift in Sources */,
 				7480D365244B76F80001625E /* World.swift in Sources */,
 				74880D912449E98900A9D676 /* AppCoordinator.swift in Sources */,
+				745C0149244DACE9005D5796 /* QuestionsView.swift in Sources */,
+				745C014D244DAE3B005D5796 /* WelcomView.swift in Sources */,
 				7490EAF3244B069100C48B78 /* main.swift in Sources */,
 				7490EAF8244B126700C48B78 /* Answer.swift in Sources */,
 				74880D94244A0DC200A9D676 /* WelcomeViewModel.swift in Sources */,
@@ -452,6 +466,7 @@
 				7480D361244B6D9E0001625E /* Network.swift in Sources */,
 				7480D36D244C52FF0001625E /* QuestionsViewModel.swift in Sources */,
 				74880D96244A1D5000A9D676 /* AppState.swift in Sources */,
+				745C014B244DAD89005D5796 /* BannerView.swift in Sources */,
 				74880D9C244A4F1900A9D676 /* With.swift in Sources */,
 				74880D8F2449E3CD00A9D676 /* Coordinator.swift in Sources */,
 				7490EAF6244B0F9D00C48B78 /* Question.swift in Sources */,
@@ -471,6 +486,7 @@
 				74880DA0244A64B400A9D676 /* WelcomeViewControllerTests.swift in Sources */,
 				7480D35C244B37E40001625E /* WelcomeViewModelTests.swift in Sources */,
 				7480D376244D1E090001625E /* QuestionsViewModelTests.swift in Sources */,
+				745C0147244DACB5005D5796 /* QuestionsViewControllerTests.swift in Sources */,
 				7480D36A244B94780001625E /* APITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

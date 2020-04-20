@@ -52,20 +52,22 @@ enum WelcomeViewModel {
         }
     }
 
-    static var feedback: FeedbackLoop<State, Event>.Feedback {
+    static func feedbacks(
+        _ scheduler: DateScheduler = QueueScheduler.main
+    ) -> FeedbackLoop<State, Event>.Feedback {
         return .combine(
-            questionsFeedback()
+            questionsFeedback(scheduler)
         )
     }
 
-    private static func questionsFeedback() -> FeedbackLoop<State, Event>.Feedback {
+    private static func questionsFeedback(_ scheduler: DateScheduler) -> FeedbackLoop<State, Event>.Feedback {
         return .init(predicate: { $0.isLoading }) { state in
             return Current.api.getQuestions()
                 .map(Event.loaded)
                 .flatMapError { _ in
                     SignalProducer.init(value: .loaded([]))
                 }
-                .observe(on: UIScheduler())
+                .observe(on: scheduler)
         }
     }
 }

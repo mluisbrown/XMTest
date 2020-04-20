@@ -8,8 +8,6 @@ class AppCoordinator: Coordinator {
     private let welcomeCoordinator: WelcomeCoordinator
     private let store: Store<State, Event>
 
-//    private let logEvents: Signal<Context<State, Event>, Never>
-
     init(window: UIWindow) {
         self.window = window
         self.rootViewController = UINavigationController()
@@ -29,12 +27,12 @@ class AppCoordinator: Coordinator {
 
         let appFeedbacks: FeedbackLoop<State, Event>.Feedback = FeedbackLoop<State, Event>.Feedback.combine(
             FeedbackLoop<State, Event>.Feedback.pullback(
-                feedback: WelcomeViewModel.feedback,
+                feedback: WelcomeViewModel.feedbacks(),
                 value: \.welcome,
                 event: Event.welcome
             ),
             FeedbackLoop<State, Event>.Feedback.pullback(
-                feedback: QuestionsViewModel.feedback,
+                feedback: QuestionsViewModel.feedbacks(),
                 value: \.questions,
                 event: Event.questions
             )
@@ -45,8 +43,6 @@ class AppCoordinator: Coordinator {
             reducer: appReducer,
             feedbacks: [appFeedbacks]
         )
-
-//        logEvents = store.state.signal.logEvents()
 
         welcomeCoordinator = WelcomeCoordinator(
             presenter: rootViewController,

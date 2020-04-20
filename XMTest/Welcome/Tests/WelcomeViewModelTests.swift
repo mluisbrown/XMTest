@@ -1,4 +1,5 @@
 import Foundation
+import ReactiveSwift
 import ReactiveFeedback
 import Nimble
 import XCTest
@@ -28,18 +29,17 @@ class WelcomeViewModelTests: XCTestCase {
     }
 
     func test_startSurvey_loaded() {
-        let questions = [
-            Question(id: 1, question: "What's your name?"),
-            Question(id: 2, question: "How old are you?")
-        ]
+        Current = .mock
+        let scheduler = TestScheduler()
 
         perform(
             stub: {
-                makeStore(for: .initial)
+                makeStore(for: .initial, scheduler: scheduler)
             },
             when: { store in
                 store.send(event: .startSurvey)
-                store.send(event: .loaded(questions))
+
+                scheduler.advance()
             },
             assert: { states in
                 expect(states.count).to(equal(3))
@@ -47,7 +47,7 @@ class WelcomeViewModelTests: XCTestCase {
                     [
                         .initial,
                         .loading,
-                        .loaded(questions)
+                        .loaded(MockNetwork.mockQuestions)
                     ]
                 ))
             }
@@ -55,12 +55,13 @@ class WelcomeViewModelTests: XCTestCase {
     }
 
     private func makeStore(
-        for status: WelcomeViewModel.Status
+        for status: WelcomeViewModel.Status,
+        scheduler: DateScheduler = QueueScheduler.main
     ) -> WelcomeStore {
         Store(
             initial: WelcomeViewModel.State.init(status: status),
             reducer: WelcomeViewModel.reducer,
-            feedbacks: []
+            feedbacks: [WelcomeViewModel.feedbacks(scheduler)]
         )
     }
 }
