@@ -2,8 +2,10 @@ import Foundation
 import ReactiveSwift
 import ReactiveFeedback
 
+typealias QuestionsStore = Store<QuestionsViewModel.State, QuestionsViewModel.Event>
+
 enum QuestionsViewModel {
-    struct State {
+    struct State: Equatable, With {
         var status: Status = .initial
         var questions: [Question] = []
         var questionIndex: Int = 0
@@ -38,13 +40,6 @@ enum QuestionsViewModel {
                 return false
             }
         }
-
-        init(_ questions: [Question] = []) {
-            self.questions = questions
-            status = .loaded
-            questionIndex = 0
-            submittedCount = 0
-        }
     }
 
     enum Status: Equatable {
@@ -69,7 +64,8 @@ enum QuestionsViewModel {
     static func reducer(state: inout State, event: Event) {
         switch event {
         case let .loaded(questions):
-            state = State(questions)
+            state.status = .loaded
+            state.questions = questions
         case let .submitAnswer(answer):
             state.status = .submitting(answer)
         case let .submitted(answer):

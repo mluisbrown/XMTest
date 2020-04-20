@@ -35,8 +35,8 @@ extension World {
 }
 
 #if DEBUG
-//var Current: World = .production
-var Current: World = .mock
+var Current: World = .production
+//var Current: World = .mock
 #else
 let Current: World = .production
 #endif
